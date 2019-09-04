@@ -21,9 +21,9 @@ RUN mkdir /root/.ssh && mkdir /root/scripts && mkdir /root/config
 #ADD config/sshd_config /etc/ssh/sshd_config
 
 ## Changing ADD commands to build on Dockerhub
-ADD /hdp-base/cconfig/id_rsa /root/.ssh/id_rsa
-ADD /hdp-base/cconfig/id_rsa.pub /root/.ssh/id_rsa.pub
-ADD /hdp-base/cconfig/sshd_config /etc/ssh/sshd_config
+ADD /hdp-base/config/id_rsa /root/.ssh/id_rsa
+ADD /hdp-base/config/id_rsa.pub /root/.ssh/id_rsa.pub
+ADD /hdp-base/config/sshd_config /etc/ssh/sshd_config
 
 RUN touch /root/.ssh/authorized_keys \
     && cat /root/.ssh/id_rsa.pub >> /root/.ssh/authorized_keys \
