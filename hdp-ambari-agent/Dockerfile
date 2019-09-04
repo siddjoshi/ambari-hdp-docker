@@ -1,4 +1,5 @@
-FROM amarmesic/hdp-base
+#FROM amarmesic/hdp-base
+FROM siddharthjoshi/ambari-hdp-base:latest
 LABEL author "Amar Mesic"
 LABEL version "0.1"
 
