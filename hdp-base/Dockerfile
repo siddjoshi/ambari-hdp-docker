@@ -16,13 +16,21 @@ RUN apt-get update
 RUN mkdir /root/.ssh && mkdir /root/scripts && mkdir /root/config
 
 # Set up SSH
-ADD config/id_rsa /root/.ssh/id_rsa
-ADD config/id_rsa.pub /root/.ssh/id_rsa.pub
-ADD config/sshd_config /etc/ssh/sshd_config
+#ADD config/id_rsa /root/.ssh/id_rsa
+#ADD config/id_rsa.pub /root/.ssh/id_rsa.pub
+#ADD config/sshd_config /etc/ssh/sshd_config
+
+## Changing ADD commands to build on Dockerhub
+ADD /hdp-base/cconfig/id_rsa /root/.ssh/id_rsa
+ADD /hdp-base/cconfig/id_rsa.pub /root/.ssh/id_rsa.pub
+ADD /hdp-base/cconfig/sshd_config /etc/ssh/sshd_config
+
 RUN touch /root/.ssh/authorized_keys \
     && cat /root/.ssh/id_rsa.pub >> /root/.ssh/authorized_keys \
     && chmod -R 600 /root/.ssh/
 
 # Set up hosts
-ADD config/hosts /etc/
+##ADD config/hosts /etc/
+ADD /hdp-base/config/hosts /etc/hosts
+
 CMD ["/bin/bash"]
